@@ -1,7 +1,10 @@
 declare global {
   interface IDapp {
-    name: string;
+    id: number
+    name: string
     logo: string
+    x: number
+    y: number
   }
 }
 

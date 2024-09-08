@@ -1,14 +1,10 @@
 import MobileLayout from "@/components/layouts/MobileLayout";
-// import { useDeviceType } from "@/hooks/useDeviceType";
-import React from "react";
+import { SettingProvider } from "./contexts/SettingContext";
 
 export default function App() {
-  // const deviceType = useDeviceType();
-
   return (
-    <React.Fragment>
-      {/* {deviceType === 'mobile' && <MobileLayout />} */}
+    <SettingProvider>
       <MobileLayout />
-    </React.Fragment>
+    </SettingProvider>
   )
 }

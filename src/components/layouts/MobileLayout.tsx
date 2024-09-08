@@ -1,10 +1,13 @@
-import React from "react";
 import FavoriteMobile from "@/components/partials/FavoriteMobile";
 import useLayoutMobile from "@/hooks/useLayoutMobile";
+import React from "react";
 import MainGrid from "../features/mobile/MainGrid";
-import { HEIGHT_STATUS_BAR_MOBILE } from "@/constants";
+import SearchField from "../features/mobile/SearchField";
+import StatusBar from "../features/mobile/StatusBar";
+import { PADDING_DAPP_MOBILE } from "@/constants";
 const MobileLayout = () => {
   const { refMainGrid, settingLayout, gridLayouts } = useLayoutMobile();
+  console.log("settingLayout: ", settingLayout)
   return (
     <React.Fragment>
       <div
@@ -15,15 +18,14 @@ const MobileLayout = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className="flex-1 flex flex-col px-5">
-          <div className="w-full" style={{
-            height: `${HEIGHT_STATUS_BAR_MOBILE}PX`
-          }}>Status Bar</div>
-          {/* lười các dapp */}
+        <div className="flex-1 flex flex-col" style={{
+            paddingLeft: `${PADDING_DAPP_MOBILE}px`,
+            paddingRight: `${PADDING_DAPP_MOBILE}px`,
+          }}>
+          <StatusBar />
           <MainGrid ref={refMainGrid} gridLayouts={gridLayouts} settingLayout={settingLayout} />
         </div>
-        <div className="h-[30px]">Search Field</div>
-        {/* 4 dapp yêu thích - Favorites */}
+        <SearchField />
         <FavoriteMobile />
       </div>
     </React.Fragment>

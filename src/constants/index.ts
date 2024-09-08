@@ -1,3 +1,4 @@
 export const HEIGHT_STATUS_BAR_MOBILE = 60
-export const HEIGHT_SEARCH_FIELD = 30
-export const HEIGHT_DOCK = 119
+export const HEIGHT_SEARCH_FIELD_MOBILE = 30
+export const HEIGHT_DOCK_MOBILE = 119
+export const PADDING_DAPP_MOBILE = 15
