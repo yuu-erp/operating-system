@@ -1,5 +1,5 @@
 import useLocalStorage from "@/hooks/useLocalStorage";
-import React, { PropsWithChildren, useCallback } from "react";
+import React, { PropsWithChildren, useCallback, useRef } from "react";
 
 type ISettingContext = {
   isEdit: boolean;
@@ -10,8 +10,22 @@ export const SettingContext = React.createContext<ISettingContext>(null!);
 
 export const SettingProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [isEdit, setIsEdit] = useLocalStorage<boolean>("isEdit", false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const onToggleEdit = useCallback((value: boolean) => setIsEdit(value), []);
+
+  const handleMouseDown = () => {
+    timerRef.current = setTimeout(() => {
+      onToggleEdit(true);
+    }, 1000);
+  };
+
+  const handleMouseUp = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  };
 
   return (
     <SettingContext.Provider
@@ -20,7 +34,16 @@ export const SettingProvider: React.FC<PropsWithChildren> = ({ children }) => {
         onToggleEdit,
       }}
     >
-      {children}
+      <div
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onTouchStart={handleMouseDown}
+        onTouchEnd={handleMouseUp}
+        style={{ width: "100vw", height: "100vh" }}
+        onClick={() => onToggleEdit(false)}
+      >
+        {children}
+      </div>
     </SettingContext.Provider>
   );
 };

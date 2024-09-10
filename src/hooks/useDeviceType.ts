@@ -12,7 +12,6 @@ const getDeviceDetails = () => {
   const isTablet = /iPad|Tablet/i.test(ua) && !/Mobi/i.test(ua);
   const isAndroid = /Android/i.test(ua);
   const isIOS = /iPhone|iPad|iPod/i.test(ua);
-  const isDesktop = !isMobile && !isTablet;
 
   return {
     deviceType: isTablet ? 'tablet' : isMobile ? 'mobile' : 'desktop',

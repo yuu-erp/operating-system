@@ -6,10 +6,11 @@ import React from "react";
 interface Props {
   gridLayouts: IGridItem[];
   settingLayout: ILayout;
+  isEdit?: boolean
 }
 
 const MainGrid = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
-  const { gridLayouts, settingLayout } = props;
+  const { gridLayouts, settingLayout, isEdit } = props;
   const { itemHeight, itemWidth, numberColumn } = settingLayout;
 
   const {
@@ -51,6 +52,7 @@ const MainGrid = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
           onMouseDown={(event) => handleMouseDown(index, event)}
           itemHeight={itemHeight}
           itemWidth={itemWidth}
+          isEdit={isEdit}
           {...dapp}
         />
       ))}

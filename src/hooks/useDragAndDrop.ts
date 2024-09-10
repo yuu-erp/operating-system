@@ -37,6 +37,7 @@ const useDragAndDrop = (
   const originalY = useRef<number>(0);
 
   const handleMouseDown = (index: number, event: React.MouseEvent) => {
+    console.log("handleMouseDown: ", index, event)
     event.preventDefault();
     if (index >= dapps.length) return;
     dragItem.current = index;
@@ -97,6 +98,7 @@ const useDragAndDrop = (
   };
 
   const handleTouchStart = (index: number, event: React.TouchEvent) => {
+    console.log("handleTouchStart: ", index, event)
     if (index >= dapps.length) return;
     dragItem.current = index;
     dragStartX.current = event.touches[0].clientX;
@@ -109,6 +111,7 @@ const useDragAndDrop = (
   };
 
   const handleTouchMove = (event: React.TouchEvent) => {
+    console.log("handleTouchMove: ", event)
     if (dragItem.current !== null) {
       const deltaX = event.touches[0].clientX - dragStartX.current;
       const deltaY = event.touches[0].clientY - dragStartY.current;
