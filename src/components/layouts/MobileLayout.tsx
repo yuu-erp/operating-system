@@ -1,12 +1,11 @@
 import FavoriteMobile from "@/components/partials/FavoriteMobile";
+import { PADDING_DAPP_MOBILE } from "@/constants";
+import { SettingContext } from "@/contexts/SettingContext";
 import useLayoutMobile from "@/hooks/useLayoutMobile";
 import React, { useContext } from "react";
 import MainGrid from "../features/mobile/MainGrid";
 import SearchField from "../features/mobile/SearchField";
 import StatusBar from "../features/mobile/StatusBar";
-import { PADDING_DAPP_MOBILE } from "@/constants";
-import { SettingContext } from "@/contexts/SettingContext";
-import SlidePage from "../features/mobile/SlidePage";
 const MobileLayout = () => {
   const { isEdit } = useContext(SettingContext)
   const { refMainGrid, settingLayout, gridLayouts } = useLayoutMobile();
