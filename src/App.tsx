@@ -1,10 +1,5 @@
-import MobileLayout from "@/components/layouts/MobileLayout";
-import { SettingProvider } from "./contexts/SettingContext";
+import React from "react";
 
 export default function App() {
-  return (
-    <SettingProvider>
-      <MobileLayout />
-    </SettingProvider>
-  )
+  return <React.Fragment>App</React.Fragment>;
 }
